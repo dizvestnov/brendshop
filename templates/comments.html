@@ -1,0 +1,48 @@
+<section class="main-commentsSubscribe">
+	<div class="container commentsSubscribe">
+		<div class="carousel slide commentsSubscribe__comment" id="carouselExampleIndicators" data-ride="carousel">
+			<div class="carousel-inner commentsSubscribe__carouselComment carouselComment">
+				{% for review in reviews if review['weight'] == 1 %}
+					{% if loop.first %}
+					<div class="carousel-item carouselComment__item active">
+					{% else %}
+					<div class="carousel-item carouselComment__item">
+					{% endif %}
+						<div class="comment">
+						<div class="comment__item"><img class="comment__img" src="data:image/png;base64,{{ review['user_avatar']|base64_encode }}">
+							<div class="comment__autor">
+								<div class="comment-autor">
+									<div class="comment-autor__name">{{ review['user_name'] }}</div>
+									<div class="comment-autor__location">Dhaka, Bd</div>
+								</div>
+							</div>
+						</div>
+						<div class="comment__item">
+							<p class="comment__text">“{{ review['content'] }}”</p>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+				<ol class="carousel-indicators carouselComment__indicators">
+					<li class="carouselComment__list active" data-target="#carouselExampleIndicators" data-slide-to="0">
+					</li>
+					<li class="carouselComment__list" data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+					<li class="carouselComment__list" data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+				</ol>
+			</div>
+		</div>
+		<div class="commentsSubscribe__subscribe">
+			<div class="subscribe">
+				<div class="subscribe__text">
+					<h3 class="subscribe__title">Subscribe</h3>
+					<p class="subscribe__description">for our newsletter and promotion</p>
+				</div>
+				<form class="form-inline form subscribe__form">
+					<input class="form__input subscribe__input" type="email" placeholder="Enter Your Email..."
+						aria-label="Search">
+					<button class="btn form__submit subscribe__submit" type="submit">Subscribe</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>

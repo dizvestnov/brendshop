@@ -1,0 +1,45 @@
+{% include 'header.html' %}
+{% include 'breadcrumbs.html' %}
+<h1>Control {{ content_data.name }}</h1>
+<form method="POST">
+	<table>
+		<thead>
+			{% for field in content_data.fields %}
+			<th>
+				{{ field.Field }}
+			</th>
+			{% endfor %}
+			<th></th>
+		</thead>
+
+		{% for item in content_data.items %}
+		<tr>
+			{% for k,value in item %}
+			<td>
+				<input type="text" name="{{ item.id }}_{{ k }}" value="{{ value }}" {% if k == "id" %}DISABLED{% endif %}>
+			</td>
+			{% endfor %}
+			<td>
+				<input type="submit" name="__save_{{ item.id }}" value="Сохранить">
+				<input type="submit" name="__delete_{{ item.id }}" value="Удалить">
+			</td>
+		</tr>
+		{% endfor %}
+
+		<tr colspan="{{ content_data.fields|length }}">
+			<td>Новая запись</td>
+		</tr>
+		<tr>
+			{% for key,field in content_data.fields %}
+			<td>
+				<input type="text" name="new_{{field.Field}}" {% if key == "id" %}DISABLED{% endif %}>
+			</td>
+			{% endfor %}
+			<td>
+				<input type="submit" name="__create" value="Создать">
+			</td>
+		</tr>
+	</table>
+</form>
+
+{% include 'footer.html' %}

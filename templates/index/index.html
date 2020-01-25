@@ -1,0 +1,118 @@
+{% include 'header.html' %}
+<section class="main-cover">
+	<div class="container">
+		<div class="cover">
+			<div class="carousel slide" id="carouselExampleSlidesOnly" data-ride="carousel">
+				<div class="carousel-inner">
+					<div class="carousel-item active"><img class="d-block cover__img" src="assets/img/bg/baner.png"
+							alt="Первый слайд">
+						<div class="carousel-caption cover-text">
+							<h1 class="cover-text__title">The Brand</h1>
+							<p class="cover-text__description">of luxurious<span class="cover-text__span">fashion</span>
+							</p>
+						</div>
+					</div>
+					<!--.carousel-item-->
+					<!--	img.d-block.cover__img(src='assets/img/bg/baner.png', alt='Второй слайд')-->
+					<!--	.carousel-caption.cover-text-->
+					<!--		h1.cover-text__title The Best-->
+					<!--		p.cover-text__description or nothing-->
+					<!--			span.cover-text__span clothes-->
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--cover-->
+<section class="main-categories container">
+	<div class="categories">
+		{% for category in categories if category.imgSrc %}
+		<div class="categories-item">
+			<a class="categories-item__link" href="?path=categories/{{category.id_category}}">
+				<div class="categories-item-text">
+					<div class="categories-item-text__description">hot deal</div>
+					<div class="categories-item-text__title">{{category.name}}</div>
+				</div>
+				<img class="categories-item__img" src="assets/img/categories/{{category.imgSrc}}" alt="man">
+			</a>
+		</div>
+		{% endfor %}
+		<!-- 
+		<div class="categories-item">
+			<a class="categories-item__link" href="#">
+				<div class="categories-item-text">
+					<div class="categories-item-text__description">30% offer</div>
+					<div class="categories-item-text__title">women</div>
+				</div>
+				<img class="categories-item__img" src="assets/img/categories/women.png" alt="women">
+			</a>
+		</div>
+		<div class="categories-item">
+			<a class="categories-item__link" href="#">
+				<div class="categories-item-text">
+					<div class="categories-item-text__description">luxurious & trendy</div>
+					<div class="categories-item-text__title">accessories</div>
+				</div>
+				<img class="categories-item__img" src="assets/img/categories/accessories.png" alt="accessories">
+			</a>
+		</div>
+		<div class="categories-item">
+			<a class="categories-item__link" href="#">
+				<div class="categories-item-text">
+					<div class="categories-item-text__description">new arrivals</div>
+					<div class="categories-item-text__title">for kids</div>
+				</div>
+				<img class="categories-item__img" src="assets/img/categories/child.png" alt="kids">
+			</a>
+		</div> -->
+	</div>
+</section>
+<!--categories-->
+<section class="main-catalog">
+	<div class="container">
+		<div class="catalog">
+			<h2 class="catalog-title">{{ content_data.siteCatalogTitle }}</h2>
+			<p class="catalog-description">{{ content_data.siteCatalogDescription }}</p>
+			<div id="goods" class="catalog-items" dataid="null">
+				<!-- вставка используя js -->
+			</div>
+			<a class="button catalog-button" href="?path=categories">{{ content_data.siteCatalogButton }}<img
+					class="catalog-buttonImg" src="assets/img/icons/button/--.png" alt="none"></a>
+		</div>
+	</div>
+</section>
+<!--catalog-->
+<section class="main-offer container">
+	<div class="offer offer-cover offer-coverItems">
+		<div class="offer-cover__img">
+			<div class="offer-cover__title">30%<span class="offer-cover__span">offer</span>
+				<div class="offer-cover__description">for women</div>
+			</div><img src="assets/img/bg/bg-offer-cover.png">
+		</div>
+		<div class="offer-items">
+			<div class="offer-coverItems__item">
+				<div class="offer-coverItems__img"><img src="assets/img/icons/offer/icon-offer-item-car.png"></div>
+				<div class="offer-coverItems__title">Free Delivery
+					<div class="offer-items__description">Worldwide delivery on all. Authority timely morph
+						next-generation innovation with extensive models.</div>
+				</div>
+			</div>
+			<div class="offer-coverItems__item">
+				<div class="offer-coverItems__img"><img src="assets/img/icons/offer/icon-offer-item-sale.png"></div>
+				<div class="offer-coverItems__title">Free Delivery
+					<div class="offer-items__description">Worldwide delivery on all. Authority timely morph
+						next-generation innovation with extensive models.</div>
+				</div>
+			</div>
+			<div class="offer-coverItems__item">
+				<div class="offer-coverItems__img"><img src="assets/img/icons/offer/icon-offer-item-crown.png"></div>
+				<div class="offer-coverItems__title">Free Delivery
+					<div class="offer-items__description">Worldwide delivery on all. Authority timely morph
+						next-generation innovation with extensive models.</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--offer-->
+{% include 'footer.html' %}

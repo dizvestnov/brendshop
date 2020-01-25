@@ -1,0 +1,126 @@
+{% include 'header.html' %}
+{% include 'breadcrumbs.html' %}
+
+<section class="main-userPage">
+	<div class="container">
+		<div class="userPage">
+			<div class="userPage-content accountView">
+
+				<div class="accountView-block blockAccount">
+					<div class="blockAccount-item">
+						<img class="blockAccount-img" src="data:image/png;base64,{{ content_data.user.user_avatar|base64_encode }}"
+							alt="" height="150px">
+					</div>
+					<div class="blockAccount-item">
+						<div class="userInfo">
+							<div class="userInfo-item">
+								<h4 class="userInfo-title">{{ content_data.user.user_name }}</h4>
+							</div>
+							<div class="userInfo-item">
+								<span>Login:&ensp;</span>
+								<h4 class="userInfo-title">{{ content_data.user.user_login }}</h4>
+							</div>
+						</div>
+					</div>
+					<nav class="blockAccount-item">
+						<div class="blockNav">
+							{% if admin %}
+							<div class="blockNav-item">
+								<a class="link blockNav-link" href="/?path=admin">Admin panel</a>
+							</div>
+							{% endif %}
+							<div class="blockNav-item">
+								<a class="link blockNav-link" href="/?path=user/edit">Edit user profile</a>
+							</div>
+							<div class="blockNav-item">
+								<a class="link blockNav-link" href="/?path=reviews">Reviews</a>
+							</div>
+						</div>
+					</nav>
+					<div class="blockAccount-item lastViewPages">
+						<div class="lastViewPages-item">
+							<h5 class="lastViewPages-title">Last view pages</h5>
+						</div>
+						<nav class="lastViewPages-item blockNav">
+							{% for link in visited_pages['pages'] %}
+							<div class="blockNav-item">
+								<a class="link blockNav-link lastViewPages-link" href="{{ link['uri'] }}">{{ link['title'] }}</a>
+							</div>
+							{% endfor %}
+						</nav>
+					</div>
+				</div>
+
+				<div class="accountView-block">
+					<div class="blockOrderInfo">
+						<div class="blockOrderInfo-item">
+							<h2 class="blockOrderInfo-title">My orders</h2>
+						</div>
+						{% if content_data.orders is iterable %}
+						<div class="blockOrderInfo-item orderTable">
+							<div class="orderTable-item">
+								<div class="blockAccount-orderTable__grid orderTable-title">
+									<h5 class="orderTable-name">№</h5>
+									<h5 class="orderTable-name">Goods</h5>
+									<h5 class="orderTable-name">Order price</h5>
+									<h5 class="orderTable-name">Order date</h5>
+									<h5 class="orderTable-name">Status</h5>
+								</div>
+							</div>
+							<div class="orderTable-item">
+								{% for order in content_data.orders %}
+								<div class="blockAccount-orderTable__grid orderTable-order order" id="order-{{ order.id_order }}">
+									<div class="orderTable-info order-id">{{ order.id_order }}
+
+										<div class="order__absolute">
+											<div class="orderInfo">
+												<div class="orderInfo__grid orderInfo-title">
+													<h6 class="orderInfo-name">Name</h6>
+													<h6 class="orderInfo-name">Address <span>(City - State)</span></h6>
+													<h6 class="orderInfo-name">Phone Number</h6>
+												</div>
+												<div class=" orderInfo__grid orderInfo-item" id="orderInfoValues-{{ order.id_order }}">
+												</div>
+											</div>
+										</div>
+
+									</div>
+									<div class="orderTable-info order-goods">More...</div>
+									<div class="orderTable-info order-amount">$ {{ order.amount }}</div>
+									<div class="orderTable-info order-createDate">{{ order.datetime_create|date('d/m/Y') }} at
+										{{ order.datetime_create|date('H:i') }}
+									</div>
+									<div class="orderTable-info order-status">{{ order.order_status_name }}</div>
+								</div>
+								<div class="orderTable-order orderBasket" id="orderBasket-{{ order.id_order }}">
+									<div class="orderBasket-item">
+										<div class="orderBasket__grid orderBasket-title">
+											<h6 class="orderBasket-name"> </h6>
+											<h6 class="orderBasket-name"> </h6>
+											<h6 class="orderBasket-name"> </h6>
+											<h6 class="orderBasket-name">Attributes</h6>
+											<h6 class="orderBasket-name">Quantity</h6>
+											<h6 class="orderBasket-name">Price</h6>
+											<h6 class="orderBasket-name">Total Price</h6>
+										</div>
+									</div>
+									<div class="orderBasket__grid orderBasket-item" id="basket-{{ order.id_order }}">
+									</div>
+								</div>
+								{% endfor %}
+							</div>
+						</div>
+						{% else %}
+						<div class="blockOrderInfo-item orderTable">
+							<h4>{{ content_data.orders }}</h4>
+						</div>
+						{% endif %}
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+{% include 'footer.html' %}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+	{% include 'head.html' %}
+
+	<body class="body">
+		<div class="site">
+			<header class="site-header">
+				<div class="container">
+					<div class="header">
+						<div class="header-logo logo">
+							<a class="logo-link" href="/">
+								<img class="logo-link" src="assets/img/icons/logo/logo.png" alt="Logo">
+							</a>
+						</div>
+						<div class="header-items">
+							<div class="header-item">
+								<div class="header-search search">
+									<div class="search-item">
+										<a class="navbarDropdown btn-dropdown search-dropdownButton" href="#" role="button"
+											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Browse
+										</a>
+										<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+											<a class="dropdown-item" href="#">Women</a>
+											<a class="dropdown-item" href="#">Dresses</a>
+											<a class="dropdown-item" href="#">Tops</a>
+											<a class="dropdown-item" href="#">Sweaters/Knits</a>
+											<a class="dropdown-item" href="#">Jackets/Coats</a>
+											<a class="dropdown-item" href="#">Blazers</a>
+											<a class="dropdown-item" href="#">Denim</a>
+											<a class="dropdown-item" href="#">Leggings/Pants</a>
+											<a class="dropdown-item" href="#">Skirts/Shorts</a>
+											<a class="dropdown-item" href="#">Accessories</a>
+											<div class="dropdownMarginTop"></div>
+											<a class="dropdown-item" href="#">Man</a>
+											<a class="dropdown-item" href="#">Tees/Tank tops</a>
+											<a class="dropdown-item" href="#">Shirts/Polos</a>
+											<a class="dropdown-item" href="#">Sweaters</a>
+											<a class="dropdown-item" href="#">Sweatshirts/Hoodies</a>
+											<a class="dropdown-item" href="#">Blazers</a>
+											<a class="dropdown-item" href="#">Jackets/Vests</a>
+										</div>
+									</div>
+									<div class="search-item">
+										<form class="search-form form">
+											<input class="search-input form-input" type="search" id="navbarDropdown"
+												placeholder="Search for item..." aria-label="Search">
+											<button class="btn btn-outline-success search-button form-submit" type="submit">
+												<i class="fas fa-search search-fa"></i>
+											</button>
+										</form>
+									</div>
+								</div>
+							</div>
+							<div class="header-item">
+								<div class="header-basket">
+									<div id="liveCart" class="basket">
+										<div class="basket-item">
+											<div class="basket-count">
+												<span class="count"></span>
+											</div>
+											<img class="basket-img" src="assets/img/icons/basket/basket@2x.png" alt="Basket">
+										</div>
+										<div id="liveCartEvent" class="basket-item">
+											<div class="basket-dropdown">
+												<div id="cart" class="basket-liveCart"></div>
+												<div class="basket-buttons">
+													<a class="basket-link" href="?path=cart/checkout">checkout</a>
+													<a class="basket-link" href="?path=cart">go to cart</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="header-myAcc">
+									{% if not auth %}
+									<a id="myAcc" class="myAcc btn-dropdown" href="?path=auth">My account</a>
+									{% else %}
+									<div id="myAcc" class="myAcc btn-dropdown">My account
+										<div class="myAcc-dropdown">
+											<div class="myAcc-item">
+												{% if admin %}
+												<a class="myAcc-link" href="/?path=admin">Admin panel</a>
+												{% endif %}
+												<a class="myAcc-link" href="?path=user">{{ user.user_name }}</a>
+												<a class="myAcc-link" href="?path=auth/logout">Sign out</a>
+											</div>
+										</div>
+									</div>
+									{% endif %}
+
+									<!-- <div id="myAcc" class="myAcc btn-dropdown">My account
+										<div class="myAcc-dropdown">
+											<div class="myAcc-item">
+												{% if not auth %}
+												<a class="myAcc-link" href="?path=user">Sign in</a>
+												<a class="myAcc-link" href="?path=user/register">Sign up</a>
+												{% else %}
+												{% if admin %}
+												<a class="myAcc-link" href="/?path=admin">Admin panel</a>
+												{% endif %}
+												<a class="myAcc-link" href="?path=user">{{ user.user_name }}</a>
+												<a class="myAcc-link" href="?path=user/logout">Sign out</a>
+												{% endif %}
+											</div>
+										</div>
+									</div> -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+			{% include 'navbar.html' %}
+			<main class="site-main">

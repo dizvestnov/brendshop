@@ -1,0 +1,115 @@
+{% set dropdown %}
+<div class="supermenu-absolute">
+	<div class="supermenu">
+		<ul class="supermenu-list">
+			<li class="supermenu-title">Catalog</li>
+			<li class="supermenu-item">
+				<a class="supermenu-link" href="#">Dresses</a>
+			</li>
+			<li class="supermenu-item">
+				<a class="supermenu-link" href="#">Tops</a>
+			</li>
+			<li class="supermenu-item">
+				<a class="supermenu-link" href="#">Sweaters/Knits</a>
+			</li>
+			<li class="supermenu-item">
+				<a class="supermenu-link" href="#">Jackets/Coats</a>
+			</li>
+			<li class="supermenu-item">
+				<a class="supermenu-link" href="#">Blazers</a>
+			</li>
+			<li class="supermenu-item">
+				<a class="supermenu-link" href="#">Denim</a>
+			</li>
+			<li class="supermenu-item">
+				<a class="supermenu-link" href="#">Leggings/Pants</a>
+			</li>
+			<li class="supermenu-item">
+				<a class="supermenu-link" href="#">Skirts/Shorts</a>
+			</li>
+			<li class="supermenu-item">
+				<a class="supermenu-link" href="#">Accessories</a>
+			</li>
+		</ul>
+		<ul class="supermenu-list">
+			<li class="supermenu-title">Brands</li>
+			<li class="supermenu-item">
+				<a class="supermenu-link" href="#">Dresses</a>
+			</li>
+			<li class="supermenu-item">
+				<a class="supermenu-link" href="#">Tops</a>
+			</li>
+			<li class="supermenu-item">
+				<a class="supermenu-link" href="#">Sweaters/Knits</a>
+			</li>
+			<li class="supermenu-item">
+				<a class="supermenu-link" href="#">Jackets/Coats</a>
+			</li>
+		</ul>
+		<ul class="supermenu-list">
+			<li class="supermenu-title">Discounts</li>
+			<li class="supermenu-item">
+				<a class="supermenu-link" href="#">Dresses</a>
+			</li>
+			<li class="supermenu-item">
+				<a class="supermenu-link" href="#">Tops</a>
+			</li>
+			<li class="supermenu-item">
+				<a class="supermenu-link" href="#">Sweaters/Knits</a>
+			</li>
+		</ul>
+		<ul class="supermenu-list">
+			<li class="supermenu-title">Special offer</li>
+			<li class="supermenu-item">
+				<a class="supermenu-link" href="#">Dresses</a>
+			</li>
+			<li class="supermenu-item">
+				<a class="supermenu-link" href="#">Tops</a>
+			</li>
+			<li class="supermenu-item">
+				<a class="supermenu-link" href="#">Sweaters/Knits</a>
+			</li>
+			<li class="supermenu-item">
+				<a class="supermenu-link" href="#">Jackets/Coats</a>
+			</li>
+		</ul>
+		<ul class="supermenu-list">
+			<img class="supermenu-img" src="assets/img/supermenu-banner.jpg" alt="banner">
+		</ul>
+	</div>
+</div>
+{% endset %}
+
+<nav class="site-navbar">
+	<div class="container">
+		<div class="navbar navbar--grid">
+			<ul class="navbar-list">
+				<li class="navbar-item">
+					<a class="navbar-link" href="/">Home</a>
+				</li>
+				{% for category in categories %}
+				{% if category.name == 'Man' %}
+				<li class="navbar-item">
+					<a class="navbar-link navbar-dropdown"
+						href="?path=categories/{{ category.id_category }}">{{ category.name }}
+					</a>
+					{{ dropdown }}
+				</li>
+				{% elseif category.name == 'Women' %}
+				<li class="navbar-item">
+					<a class="navbar-link navbar-dropdown"
+						href="?path=categories/{{ category.id_category }}">{{ category.name }}
+					</a>
+					{{ dropdown }}
+				</li>
+				{% else%}
+				<li class="navbar-item">
+					<a class="navbar-link" href="?path=categories/{{ category.id_category }}">{{ category.name }}
+					</a>
+				</li>
+				{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+</nav>

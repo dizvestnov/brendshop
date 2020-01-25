@@ -1,0 +1,52 @@
+<nav class="site-botNav">
+	<div class="container">
+		<div class="botNav">
+			<div class="botNav-item">
+				<div class="botNav-logo logo">
+					<a href="/" class="logo-link">
+						<img src="assets/img/icons/logo/logo.png" class="logo-img" alt="logo">
+					</a>
+				</div>
+				<div class="botNav-text">
+					<p class="botNav-description">Objectively transition extensive data rather than cross functional
+						solutions. Monotonically syndicate multidisciplinary materials before go forward benefits.
+						Intrinsically syndicate an expanded array of processes and cross-unit partnerships.</p>
+					<p class="botNav-description">Efficiently plagiarize 24/365 action items and focused intermediaries.
+						Distinctively seize superior initiatives for wireless technologies. Dynamically optimize.</p>
+				</div>
+			</div>
+			<div class="botNav-item botNavMenu">
+				<div class="botNavMenu-list">
+					<div class="botNavMenu-title">Company</div>
+					<div class="botNavMenu-item">
+						{% for page in pages %}
+							{% if page.id < 6 %}
+								<a href="{{ page.url }}" class="button botNavMenu-link">{{ page.name }}</a>
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+				<div class="botNavMenu-list">
+					<div class="botNavMenu-title">Information</div>
+					<div class="botNavMenu-item">
+						{% for page in pages %}
+							{% if page.id > 5 %}
+								<a href="{{ page.url }}" class="button botNavMenu-link">{{ page.name }}</a>
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+				<div class="botNavMenu-list">
+					<div class="botNavMenu-title">Shop Category</div>
+					<div class="botNavMenu-item">
+						{% for category in categories if category.id_category < 4 %}
+						<a href="?path=categories/{{ category.id_category }}" class="button botNavMenu-link">{{ category.name }}</a>
+						{% endfor %}
+						<a href="#" class="button botNavMenu-link">Apparel</a>
+						<a href="#" class="button botNavMenu-link">Brows All</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</nav>

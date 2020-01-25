@@ -1,0 +1,123 @@
+{% include 'header.html' %}
+{% include 'breadcrumbs.html' %}
+
+<section class="main-userPage">
+	<div class="container">
+		<div class="userPage">
+			<!-- <h1 class="mb-5 userForm">{{ title }}</h1> -->
+			<div class="userPage-content accountView">
+				<div class="accountView-block blockAccount">
+					<div class="blockAccount-item">
+						<img class="blockAccount-img" src="data:image/png;base64,{{ content_data.user.user_avatar|base64_encode }}"
+							alt="" height="150px">
+					</div>
+					<div class="blockAccount-item">
+						<div class="userInfo">
+							<div class="userInfo-item">
+								<h4 class="userInfo-title">{{ content_data.user.user_name }}</h4>
+							</div>
+							<div class="userInfo-item">
+								<span>Login:&ensp;</span>
+								<h4 class="userInfo-title">{{ content_data.user.user_login }}</h4>
+							</div>
+						</div>
+					</div>
+					<nav class="blockAccount-item">
+						<div class="blockNav">
+							{% if admin %}
+							<div class="blockNav-item">
+								<a class="link blockNav-link" href="/?path=admin">Admin panel</a>
+							</div>
+							{% endif %}
+							<div class="blockNav-item">
+								<a class="link blockNav-link" href="/?path=user/edit">Edit user profile</a>
+							</div>
+							<div class="blockNav-item">
+								<a class="link blockNav-link" href="/?path=user">Account</a>
+							</div>
+						</div>
+					</nav>
+					<div class="blockAccount-item lastViewPages">
+						<div class="lastViewPages-item">
+							<h5 class="lastViewPages-title">Last view pages</h5>
+						</div>
+						<nav class="blockNav lastViewPages-item">
+							{% for link in visited_pages['pages'] %}
+							<div class="blockNav-item">
+								<a class="link blockNav-link lastViewPages-link" href="{{ link['uri'] }}">{{ link['title'] }}</a>
+							</div>
+							{% endfor %}
+						</nav>
+					</div>
+				</div>
+				<div class="accountView-block">
+					<div class="reviews">
+						<div class="reviews-item col-6">
+							{% if content_data.error %}
+							<div class="alert alert-danger" role="alert">
+								{{ content_data.error }}
+							</div>
+							{% endif %}
+
+							{% if content_data.items %}
+							{% for item in content_data.items %}
+							<div class="card">
+								<div class="card-body">
+									<!-- <h5 class="card-title">Review №{{ item.id_reviews }} </h5> -->
+									<div class="card-item">
+										<h6 class="card-subtitle">
+											Author: {{ item.user_name }}
+										</h6>
+										{% if admin %}
+										<a class="closeBtn card-subtitle" href="/?path=reviews/delete/{{ item.id_reviews }}">
+											<img id="closeBtn" class="closeBtn-img" src="assets/img/icons/button/close-button.png"
+												alt="close">
+										</a>
+										{% elseif item.id_user == content_data.user.id_user %}
+										<a class="closeBtn card-subtitle" href="/?path=reviews/delete/{{ item.id_reviews }}">
+											<img id="closeBtn" class="closeBtn-img" src="assets/img/icons/button/close-button.png"
+												alt="close">
+										</a>
+										<a id="editReviewBtn" class="closeBtn card-subtitle" href="#">
+											<img class="closeBtn-img" src="assets/img/icons/button/close-button.png"
+												alt="close">
+										</a>
+										{% endif %}
+									</div>
+									<p class="card-text">
+										{{ item.content }}
+									</p>
+									<small class="card-date card-subtitle">
+										{{ item.datetime|date('d/m/Y') }} at {{ item.datetime|date('H:i') }}
+									</small>
+								</div>
+							</div>
+							{% endfor %}
+							{% else %}
+							<div class="py-3">
+								<em>No reviews yet...</em>
+							</div>
+							{% endif %}
+						</div>
+						{% if auth %}
+						<div class="reviews-item col-6">
+							<form method="post" class="addReviews">
+								<div class="form-group">
+									<label for="content">Review</label>
+									<textarea class="form-control" name="content" id="content" rows="5"></textarea>
+								</div>
+
+								<div class="form-group">
+									<button type="submit" name="add_comment" class="form-control btn btn-success">Add a review</button>
+								</div>
+							</form>
+						</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% include 'footer.html' %}

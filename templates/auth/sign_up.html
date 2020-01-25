@@ -1,0 +1,56 @@
+<section class="popBlock" id="sign_up-popupElement">
+	<div class="formBlock">
+
+		<div>
+			<div class="closeBtn">
+				<img id="closeBtn" class="closeBtn-img" src="assets/img/icons/button/close-button.png" alt="close">
+			</div>
+		</div>
+		<div class="formBlock-title">
+			<h1>{{ title }}</h1>
+			<span class="required_notification">* Denotes Required Field</span>
+		</div>
+
+		<div>
+			<form class="auth_form" method="post">
+				<div class="form-group auth_form-item">
+					<label class="checkout_label" for="name">Name</label>
+					<input class="checkout_input" name="name" type="text" placeholder="Enter your name" required>
+				</div>
+				<div class="form-group auth_form-item">
+					<label class="checkout_label" for="login">Login</label>
+					<input class="checkout_input" name="login" type="text" id="login" placeholder="Enter login" required>
+				</div>
+				<!-- <div class="form-group auth_form-item">
+					<label class="checkout_label" for="email">Email address</label>
+					<input class="checkout_input" name="email" type="email" placeholder="Enter email" required>
+					<span class="form_hint">Proper format "name@something.com"</span>
+					<small class="form-text" id="emailHelp">
+						We do not provide access to your email to third parties.
+					</small>
+				</div> -->
+
+				<div class="form-group auth_form-item">
+					<label class="checkout_label" for="password">Password</label>
+					<input class="checkout_input" name="password" type="password" id="password" placeholder="Password" required>
+					<!-- <input class="checkout_input mt-1" name="password2" type="password" id="password2"
+						placeholder="Repeat Password"> -->
+				</div>
+
+				<!-- <div class="form-group auth_form-item form-check">
+					<input class="form-check-input" id="sign_up-Check1" type="checkbox">
+					<label class="form-check-label" for="sign_up-Check1">Receive promotional materials</label>
+				</div> -->
+
+				<div class="form-group auth_form-item form-check">
+					<input class="form-check-input" id="sign_up-Check2" type="checkbox" required>
+					<label class="form-check-label" for="sign_up-Check2">I have read and agree <a href='#'>Conditions of Use</a> and <a href='#'>Privacy Notice</a></label>
+				</div>
+
+				<button type="submit" name="reg_user" id="checkout_registr_submit"
+					class="btn auth_form-button">Continue</button>
+			</form>
+		</div>
+	</div>
+
+</section>

@@ -1,0 +1,54 @@
+<section class="breadcrumbs">
+	<div class="container">
+		<div class="breadcrumbs_block">
+			{% if content_data.good or (content_data.view != "categories") %}
+			<h1>{{ title }}</h1>
+			{% elseif not title %}
+			<h1>Shop</h1>
+			{% else %}
+			<h1>{{ title }} Category</h1>
+			{% endif %}
+			<ul id="breadcrumbs">
+				<li>
+					<a href="/">home</a>
+				</li>
+				{% if content_data.category.parent_id != NULL %}
+				<li>
+					/<a href="?path=categories">categories</a>
+				</li>
+				{% elseif content_data.view != "categories" %}
+				{% else %}
+				<li>
+					/<a class="current" href="?path=categories">categories</a>
+				</li>
+				{% endif %}
+				{% if ( content_data.category.parent_id != 0 ) and ( content_data.category.parent_id > 5 ) %}
+				<li>
+					/<a
+						href="?path=categories/{{ content_data.categories[content_data.category.parent_id - 1].parent_id }}">{{ content_data.categories[content_data.categories[content_data.category.parent_id - 1].parent_id - 1].name }}</a>
+				</li>
+				<li>
+					/<a
+						href="?path=categories/{{ content_data.category.parent_id }}">{{ content_data.categories[content_data.category.parent_id - 1].name }}</a>
+				</li>
+				{% elseif content_data.category.parent_id != 0 %}
+				<li>
+					/<a
+						href="?path=categories/{{ content_data.category.parent_id }}">{{ content_data.categories[content_data.category.parent_id - 1].name }}</a>
+				</li>
+				{% endif %}
+
+				{% if content_data.good %}
+				<li>
+					/<a class="current"
+						href="?path=categories/{{ content_data.categories[content_data.category.id_category - 1].id_category }}">{{ content_data.categories[content_data.category.id_category - 1].name }}</a>
+				</li>
+				{% elseif title %}
+				<li>
+					/&nbsp;&nbsp;<span class="current">{{ title }}</span>
+				</li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+</section>

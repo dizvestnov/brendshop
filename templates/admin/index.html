@@ -1,0 +1,151 @@
+{% include 'header.html' %}
+{% include 'breadcrumbs.html' %}
+
+<section class="main-adminPage">
+	<div class="container">
+		<div class="adminPage">
+			<!-- <h1 class="mb-5 userForm">{{ title }}</h1> -->
+			<div class="adminPage-content accountView">
+				<div class="accountView-block blockAccount">
+					<nav class="blockNav">
+						{% for key,control in content_data.controls %}
+						{% if control == "Orders" %}
+						<div class="blockNav-item">
+							<a class="link blockNav-link" href="/?path=admin">{{ control }}</a>
+						</div>
+						{% else %}
+						<div class="blockNav-item">
+							<a class="link blockNav-link" href="/?path=admin/{{ key }}/">{{ control }}</a>
+						</div>
+						{% endif %}
+						{% endfor %}
+					</nav>
+				</div>
+
+				<div class="accountView-block blockOrderInfo">
+					<div class="blockOrderInfo-item">
+						<h2 class="blockOrderInfo-title">Orders</h2>
+					</div>
+
+					<div class="blockOrderInfo-item orderTable">
+						<div class="orderTable-item">
+							<div class="orderTable__grid orderTable-title">
+								<h5 class="orderTable-name">№</h5>
+								<h5 class="orderTable-name">Goods</h5>
+								<h5 class="orderTable-name">Client</h5>
+								<h5 class="orderTable-name">Price</h5>
+								<h5 class="orderTable-name">Order date</h5>
+								<h5 class="orderTable-name">Status</h5>
+								<h5 class="orderTable-name">Actions</h5>
+							</div>
+						</div>
+						<div class="orderTable-item">
+							{% for order in content_data.orders %}
+							<div class="orderTable__grid orderTable-order order" id="order-{{ order.id_order }}">
+								<div class="orderTable-info order-id">{{ order.id_order }}
+
+									<div class="order__absolute">
+										<div class="orderInfo">
+											<div class="orderInfo__grid orderInfo-title">
+												<h6 class="orderInfo-name">Name</h6>
+												<h6 class="orderInfo-name">Address <span>(City - State)</span></h6>
+												<h6 class="orderInfo-name">Phone Number</h6>
+											</div>
+											<div class=" orderInfo__grid orderInfo-item" id="orderInfoValues-{{ order.id_order }}">
+											</div>
+										</div>
+									</div>
+
+								</div>
+								<div class="orderTable-info order-goods">More...</div>
+								<div class="orderTable-info order-userName">{{ order.user_name }}</div>
+								<div class="orderTable-info order-amount">{{ order.amount }}</div>
+								<div class="orderTable-info order-createDate">{{ order.datetime_create|date('d/m/Y') }} at
+									{{ order.datetime_create|date('H:i') }}
+								</div>
+								<div class="orderTable-info order-status">{{ order.order_status_name }}</div>
+								<div class="orderTable-info order-actions">
+									<button class="btn btn-success btn_process order-actionsBtn" data-id="{{ order.id_order }}">Complete
+									</button>
+									<button class="btn btn-danger btn_remove order-actionsBtn"
+										data-id="{{ order.id_order }}">Delete</button>
+								</div>
+							</div>
+							<div class="orderTable-order orderBasket" id="orderBasket-{{ order.id_order }}">
+								<div class="orderBasket-item">
+									<div class="orderBasket__grid orderBasket-title">
+										<h6 class="orderBasket-name"> </h6>
+										<h6 class="orderBasket-name"> </h6>
+										<h6 class="orderBasket-name"> </h6>
+										<h6 class="orderBasket-name">Attributes</h6>
+										<h6 class="orderBasket-name">Quantity</h6>
+										<h6 class="orderBasket-name">Price</h6>
+										<h6 class="orderBasket-name">Total Price</h6>
+									</div>
+								</div>
+								<div class="orderBasket__grid orderBasket-item" id="basket-{{ order.id_order }}"></div>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% include 'footer.html' %}
+<!-- <table class="table">
+	<tr>
+		<th>Number</th>
+		<th>Client</th>
+		<th>Goods</th>
+		<th>Price</th>
+		<th>Order date</th>
+		<th>Status</th>
+		<th>Actions</th>
+	</tr>
+	{% for order in content_data.orders %}
+	<tr id="order-{{ order.id_order }}">
+		<td class="adminOrderId">№ {{ order.id_order }}
+			<div class="adminOrderId-absolute">
+				<table class="table adminOrderInfo">
+					<tr class="orderInfo-titles">
+						<th>Name</th>
+						<th>Address <span>(City - State)</span></th>
+						<th>Phone Number</th>
+					</tr>
+					<tr id="orderInfoValues-{{ order.id_order }}" class="orderInfo-values"></tr>
+				</table>
+			</div>
+		</td>
+		<td>{{ order.user_name }}</td>
+		<td class="adminOrderGoods">More...
+			<div class="adminOrderId-absolute">
+				<table id="basket-{{ order.id_order }}" class="table adminOrderInfo adminOrderBasket">
+					<tr class="adminOrderBasket-title">
+						<td>№</td>
+						<td>img</td>
+						<td>Name</td>
+						<td>attr</td>
+						<td>count</td>
+						<td>price</td>
+						<td>total price</td>
+					</tr>
+					<tr class="adminOrderBasket-item">
+					</tr>
+				</table>
+			</div>
+		</td>
+
+		<td>{{ order.amount }}</td>
+		<td>{{ order.datetime_create|date('d/m/Y') }} at {{ order.datetime_create|date('H:i') }}</td>
+		<td class="field-status">{{ order.order_status_name }}</td>
+		<td>
+			<button class="btn btn-success btn_process" data-id="{{ order.id_order }}">Complete
+			</button>
+			<button class="btn btn-danger btn_remove" data-id="{{ order.id_order }}">Delete</button>
+		</td>
+	</tr>
+	{% endfor %}
+</table> -->

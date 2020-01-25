@@ -1,0 +1,203 @@
+{% include 'header.html' %}
+{% include 'breadcrumbs.html' %}
+<section class="container main-checkout_section">
+	<div class="checkout_blok">
+		<details open>
+
+			<summary class="checkout_blok_name">
+				<span>01.</span><span>Shipping Address</span>
+			</summary>
+
+			{% if not auth and not content_data.guest %}
+			<div class="checkout_blok_details">
+				<div class="checkout_blok_left">
+					<form class="auth_form" method="post">
+						<div class="checkout_blok_title">Check as a guest or register
+							<div>Register with us for future convenience</div>
+						</div>
+						<div class="checkout_as_guest_all">
+							<div class="checkout_as_guest">
+
+								<input id="checkOutAsGuest" name="checkout_radio" type="radio" title="checkout as guest"
+									value="asguest">
+								<label class="checkout_as_guest_lable" for="checkout_as_guest">checkout as guest</label>
+
+							</div>
+							<div class="checkout_as_guest">
+
+								<input id="checkOutSignUp" name="checkout_radio" type="radio" title="register" value="reg"
+									checked="checked">
+								<label class="checkout_as_guest_lable" for="checkout_as_guest">register</label>
+
+							</div>
+						</div>
+						<div class="checkout_blok_title">register and save time!
+							<div>Register with us for future convenience</div>
+						</div>
+						<div class="checkout_href">
+							<span><i class="fa fa-angle-double-right" aria-hidden="true"></i>Fast and easy checkout</span>
+							<span><i class="fa fa-angle-double-right" aria-hidden="true"></i>Easy access to your order history and
+								status</span>
+						</div>
+						<button id="checkOutSignUp_Btn" class="auth_form-button btn" name="checkout_continue" type="submit">
+							Continue
+						</button>
+					</form>
+				</div>
+				<div class="checkout_blok_right">
+					<div class="checkout_blok_title">Already registed?
+						<div>Please log in below</div>
+						<form class="auth_form" method="post">
+							<div class="form-group auth_form-item">
+								<label class="checkout_label" for="login">Login</label>
+								<input class="checkout_input" name="login" type="text" id="login" placeholder="Enter login" required>
+							</div>
+
+							<div class="form-group auth_form-item">
+								<label class="checkout_label" for="password">Password</label>
+								<input class="checkout_input" name="password" type="password" id="password" placeholder="Password"
+									required>
+							</div>
+
+							<div class="form-group form-check">
+								<input class="form-check-input" name="remember" type="checkbox" id="exampleCheck1">
+								<label class="form-check-label" for="exampleCheck1">Remember me</label>
+							</div>
+
+							<button id="checkout_registr_submit" class="auth_form-button btn" type="submit"
+								name="login_user">Continue</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			{% else %}
+			<div class="checkout_blok_details">
+				<div class="checkout_blok_left">
+					<form class="auth_form" method="post">
+						<div class="form-group auth_form-item">
+							<label class="checkout_label" for="firstName">First Name</label>
+							<input class="checkout_input" name="first_name" type="text" class="checkout-input" id="firstName"
+								aria-describedby="emailHelp" placeholder="Recipient First Name">
+						</div>
+						<div class="form-group auth_form-item">
+							<label class="checkout_label" for="lastName">Last Name</label>
+							<input class="checkout_input" name="last_name" type="text" class="checkout-input" id="lastName"
+								placeholder="Recipient Last Name">
+						</div>
+						<div class="form-group auth_form-item">
+							<label class="checkout_label" for="address">Address</label>
+							<input class="checkout_input" name="address" type="text" class="checkout-input" id="address"
+								placeholder="Shipping Address">
+						</div>
+						<div class="form-group auth_form-item">
+							<label class="checkout_label" for="city">City</label>
+							<input class="checkout_input" name="city" type="text" class="checkout-input" id="city"
+								placeholder="Shipping City">
+						</div>
+						<div class="form-group auth_form-item">
+							<label class="checkout_label" for="state">State</label>
+							<input class="checkout_input" name="state" type="text" class="checkout-input" id="state"
+								placeholder="Shipping State">
+						</div>
+						<div class="form-group auth_form-item">
+							<label class="checkout_label" for="phoneNumber">Phone Number</label>
+							<input class="checkout_input" name="phone_number" type="text" class="checkout-input" id="phoneNumber"
+								placeholder="Your or Recipient Phone Number">
+						</div>
+
+						<button id="checkout" class="auth_form-button btn" type="submit" name="order_info">Continue</button>
+					</form>
+				</div>
+				<div class="shoppingCart_checkoutRegUser">
+					<div class="shoppingCart_checkout">
+						<div class="shopingcart_checkout_blok_all">
+							<div id="shCartSubTotal" class="sub_total">Sub total</div>
+							<div class="sub_total">Tax<span>$11.90</span></div>
+							<div class="sub_total">Shiping<span>$9.99</span></div>
+							<div class="sh_ch_blok_poloska"></div>
+							<div id="shCartGrandTotal" class="grand_total">GRAND TOTAL</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endif %}
+		</details>
+		<div class="checkout_blok_poloska"></div>
+		<details>
+			<summary class="checkout_blok_name"><span>02. BILLING INFORMATION  </span></summary>
+			<div class="checkout_blok_details">
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Man</a></li>
+					<li><a href="#">Women</a></li>
+					<li><a href="#">Kids</a></li>
+					<li><a href="#">Accoseriese</a></li>
+					<li><a href="#">Featured</a></li>
+					<li><a href="#">Hot Deals</a></li>
+				</ul>
+			</div>
+		</details>
+		<div class="checkout_blok_poloska"></div>
+		<details>
+			<summary class="checkout_blok_name"><span>03. SHIPPING INFORMATION </span></summary>
+			<div class="checkout_blok_details">
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Man</a></li>
+					<li><a href="#">Women</a></li>
+					<li><a href="#">Kids</a></li>
+					<li><a href="#">Accoseriese</a></li>
+					<li><a href="#">Featured</a></li>
+					<li><a href="#">Hot Deals</a></li>
+				</ul>
+			</div>
+		</details>
+		<div class="checkout_blok_poloska"></div>
+		<details>
+			<summary class="checkout_blok_name"><span>04. SHIPPING METHOD </span></summary>
+			<div class="checkout_blok_details">
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Man</a></li>
+					<li><a href="#">Women</a></li>
+					<li><a href="#">Kids</a></li>
+					<li><a href="#">Accoseriese</a></li>
+					<li><a href="#">Featured</a></li>
+					<li><a href="#">Hot Deals</a></li>
+				</ul>
+			</div>
+		</details>
+		<div class="checkout_blok_poloska"></div>
+		<details>
+			<summary class="checkout_blok_name"><span>05. PAYMENT METHOD </span></summary>
+			<div class="checkout_blok_details">
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Man</a></li>
+					<li><a href="#">Women</a></li>
+					<li><a href="#">Kids</a></li>
+					<li><a href="#">Accoseriese</a></li>
+					<li><a href="#">Featured</a></li>
+					<li><a href="#">Hot Deals</a></li>
+				</ul>
+			</div>
+		</details>
+		<div class="checkout_blok_poloska"></div>
+		<details>
+			<summary class="checkout_blok_name"><span>06. ORDER REVIEW </span></summary>
+			<div class="checkout_blok_details">
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Man</a></li>
+					<li><a href="#">Women</a></li>
+					<li><a href="#">Kids</a></li>
+					<li><a href="#">Accoseriese</a></li>
+					<li><a href="#">Featured</a></li>
+					<li><a href="#">Hot Deals</a></li>
+				</ul>
+			</div>
+		</details>
+		<div class="checkout_blok_poloska"></div>
+	</div>
+</section>
+{% include 'footer.html' %}

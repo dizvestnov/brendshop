@@ -1,0 +1,9 @@
+#Options +FollowSymlinks
+#RewriteEngine On
+# Если не файл
+#RewriteCond %{REQUEST_FILENAME} !-f 
+# Если не директория
+#RewriteCond %{REQUEST_FILENAME} !-d 
+# Запускаем index.php
+#RewriteRule (.*) index.php
+

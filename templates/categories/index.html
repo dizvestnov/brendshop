@@ -1,0 +1,138 @@
+{% include 'header.html' %}
+{% include 'breadcrumbs.html' %}
+<section class="container">
+	<div class="catalog_product_menu">
+		<div class="catalog_product_categories_blok">
+			<details open>
+				<summary class="catalog_product_categories"><span>CATEGORY</span><span class="close_open_details"></span>
+				</summary>
+				<div class="catalog_product_categories_nav_details">
+					<ul>
+						{% for subcategory in content_data.subcategories %}
+						<li>
+							<a href="/?path=categories/{{ subcategory.id_category }}">{{ subcategory.name }}</a>
+						</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</details>
+			<details>
+				<summary class="catalog_product_categories"><span>BRAND</span><span class="close_open_details"></span>
+				</summary>
+				<div class="catalog_product_categories_nav_details">
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Man</a></li>
+						<li><a href="#">Women</a></li>
+						<li><a href="#">Kids</a></li>
+						<li><a href="#">Accoseriese</a></li>
+						<li><a href="#">Featured</a></li>
+						<li><a href="#">Hot Deals</a></li>
+					</ul>
+				</div>
+			</details>
+			<details>
+				<summary class="catalog_product_categories"><span>DESIGNER</span><span class="close_open_details"></span>
+				</summary>
+				<div class="catalog_product_categories_nav_details">
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Man</a></li>
+						<li><a href="#">Women</a></li>
+						<li><a href="#">Kids</a></li>
+						<li><a href="#">Accoseriese</a></li>
+						<li><a href="#">Featured</a></li>
+						<li><a href="#">Hot Deals</a></li>
+					</ul>
+				</div>
+			</details>
+		</div>
+		<div class="catalog_product">
+			<div class="catalog_product_filter">
+				<div class="cat_pr_filter_trending">Trending now
+					<div class="href"><a href="">Bohemian</a><span>|</span><a href="">Floral</a><span>|</span><a
+							href="">Lace</a><a href=""> Floral</a><span>|</span><a href="">Lace</a><span>|</span><a
+							href="">Bohemian</a></div>
+				</div>
+				<div class="cat_pr_filter_size">Size
+					<form action="#">
+						<div class="size-checkbox checkbox-1">
+							<input id="xxs" type="checkbox">
+							<label for="xxs">XXS</label>
+						</div>
+						<div class="size-checkbox checkbox-2">
+							<input id="xs" type="checkbox">
+							<label for="xs">XS</label>
+						</div>
+						<div class="size-checkbox checkbox-3">
+							<input id="s" type="checkbox">
+							<label for="s">S</label>
+						</div>
+						<div class="size-checkbox checkbox-4">
+							<input id="m" type="checkbox">
+							<label for="m">M</label>
+						</div>
+						<div class="size-checkbox checkbox-5">
+							<input id="l" type="checkbox">
+							<label for="l">L</label>
+						</div>
+						<div class="size-checkbox checkbox-6">
+							<input id="xl" type="checkbox">
+							<label for="xl">XL</label>
+						</div>
+						<div class="size-checkbox checkbox-7">
+							<input id="xxl" type="checkbox">
+							<label for="xxl">XXL</label>
+						</div>
+					</form>
+				</div>
+				<div class="cat_pr_filter_price">Price
+					<div class="label">
+						<label>
+							<input id="label_range" type="range" min="14.99" max="562">
+						</label>
+					</div>
+					<div class="prices">
+						<div>$14.99</div>
+						<div>$561</div>
+					</div>
+				</div>
+			</div>
+			<div class="catalog_product_sort">
+				<div class="cat_prod_sort">
+					<label for="sort_by">Sort By</label>
+					<div class="select">
+						<select id="sort_by" name="sort_by">
+							<option value="name"></option>
+							<option id="sortName-down" value="name">Name &#xf15d;</option>
+							<option id="sortName-up" value="name">Name &#xf15e;</option>
+							<option id="sortPrice-down" value="price">Price &#xf884;</option>
+							<option id="sortPrice-up" value="price">Price &#xf160;</option>
+						</select> <span class="close_open_details"></span>
+					</div>
+				</div>
+				<div class="cat_prod_show">
+					<label for="show">Show</label>
+					<div class="select">
+						<select id="show" name="show">
+							<option value="number">09</option>
+							<option value="number">12</option>
+							<option value="number">15</option>
+						</select><span class="close_open_details"></span>
+					</div>
+				</div>
+			</div>
+			<div id="goods" class="catalog-items" dataid='{{ content_data.category_id }}'>
+
+			</div>
+			<div class="catalog_product_footer">
+
+				<div class="paginator"><a href="#"><i class="fas fa-angle-left"></i></a><a id="paginator_active_link"
+						href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a><a
+						href="#">6</a><span>…</span><a href="#">20</a><a href="#"><i class="fas fa-angle-right"></i></a></div>
+				<button>View All</button>
+			</div>
+		</div>
+	</div>
+</section>
+{% include 'footer.html' %}

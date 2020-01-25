@@ -1,0 +1,95 @@
+{% include 'header.html' %}
+{% include 'breadcrumbs.html' %}
+<section class="main-goodPage goodPage">
+	<div class="goodPage-gallery">
+		<div class="gallery">
+			<div class="gallery-photos">
+				<!-- {{  dump(not content_data.good_photos is iterable) }} -->
+				{% if content_data.good_photos is empty %}
+					<img class="gallery-img" src="{{ content_data.good.imgSrc }}"
+						data-full_image_url="{{ good_photo.imgSrc }}" alt="{{ content_data.name }}">
+				{% else %}
+					{% for good_photo in content_data.good_photos %}
+						{% if loop.first %}
+							<img class="gallery-img img-{{ good_photo.id_good_imgs }}" src="{{ good_photo.imgSrc }}"
+							data-full_image_url="{{ good_photo.imgSrc }}" alt="{{ content_data.name }}">
+						{% else %}
+							<img style="display: none;" class="gallery-img img-{{ good_photo.id_good_imgs }}" src="{{ good_photo.imgSrc }}"
+							data-full_image_url="{{ good_photo.imgSrc }}" alt="{{ content_data.name }}">
+						{% endif %}
+					{% endfor %}
+				{% endif %}
+			</div>
+			<div class="gallery-btn">
+				<a id="angelBtn-left" class="angle" href="#">
+					<i class="fa fa-angle-left" aria-hidden="true"></i>
+				</a>
+				<a id="angelBtn-right" class="angle" href="#">
+					<i class="fa fa-angle-right" aria-hidden="true"></i>
+				</a>
+			</div>
+
+		</div>
+	</div>
+	<div class="goodPage-goodInfo container">
+		<div id="good" class="goodInfo">
+			<div class="item_category_name_block">
+				<div class="item_category_name">{{ content_data.category.name }} COLLECTION</div>
+				<div class="item_category_poloska_1"></div>
+				<div class="item_id_name">{{ content_data.good.name }}</div>
+			</div>
+			<div class="item_composition_price">
+				<div class="item_discription">{{ content_data.good.description }}</div>
+				<div class="item_composition">
+					<div class="material">MATERIAL:<span>COTTON</span></div>
+					<div class="disainer">DESIGNER:<span>BINBURHAN</span></div>
+				</div>
+				<div class="item_id_price">{{ content_data.good.price }} $</div>
+			</div>
+			<div class="item_category_poloska_3"></div>
+			<div class="item_specification">
+				<div class="item__details">CHOOSE COLOR
+					<select id="color" title="color">
+						<option value="red">Red</option>
+						<option value="green">Green</option>
+						<option value="black">Black</option>
+					</select>
+				</div>
+				<div class="item__details">CHOOSE SIZE
+					<select id="size" title="size">
+						<option value="xxl">XXL</option>
+						<option value="xl">XL</option>
+						<option value="l">L</option>
+					</select>
+				</div>
+				<div class="item__details">QUANTITY
+					<input id="good_goodQuantity" type="number" value="1" min="1" data-id="{{ content_data.good.id_good }}">
+				</div>
+			</div>
+			<div id="buy">
+				<a class='buy button' data-id="{{ content_data.good.id_good }}" data-price="{{ content_data.good.price }}"
+					data-name="{{ content_data.good.name }}" data-imgsrc="{{ content_data.good.imgSrc }}"
+					data-quantity="{{ content_data.good.quantity }}">
+					<img src="assets/img/singlePage/cart.png" alt="">
+					Add to Cart
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+<div class="you_may_like container">
+	<h3>You May Like Also</h3>
+</div>
+<section class="youMayLike-catalog container">
+	{% for good in content_data.goods %}
+	<div class="good button">
+		<a href="?path=categories/good/{{ good.id_good }}" class="catalog-item">
+			<img class="catalog-img" src="{{ good.imgSrc }}" alt="{{ good.name }}">
+			<div class="catalog-name">{{ good.name }}</div>
+			<div class="catalog-price">${{ good.price }}</div>
+			<div class="catalogHover"></div>
+		</a>
+	</div>
+	{% endfor %}
+</section>
+{% include 'footer.html' %}
